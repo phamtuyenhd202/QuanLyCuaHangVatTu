@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="425" pageHeight="425" columnWidth="385" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58b60c07-7cdb-4555-b00b-d22799e53b62">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#0088FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="9074cc3a-9b8e-4186-b194-321ea05cd2be"/>
+	<subDataset name="Table Dataset 1" uuid="8357db53-8e85-4d8f-a089-53bd264beca2"/>
+	<subDataset name="dataset2" uuid="c45dacb2-793a-4ebd-9338-024c640ae489"/>
+	<parameter name="MaHD" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select invoices.MaHD, TenKH, NgayPhatHanh, MaNV, productmanagement.MaSP, TenSP, SoLuongMua, DonGia, SoLuongMua * DonGia, Sum(SoLuongMua*DonGia) OVER(), Count(invoicedetails.MaSP) OVER() from invoices 
+left join invoicedetails on invoices.MaHD = invoicedetails.MaHD
+inner join productmanagement on invoicedetails.MaSP = productmanagement.MaSP where invoices.MaHD = $P{MaHD}]]>
+	</queryString>
+	<field name="MaHD" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TenKH" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NgayPhatHanh" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MaNV" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MaSP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TenSP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SoLuongMua" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DonGia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SoLuongMua * DonGia" class="java.lang.Long"/>
+	<field name="Sum(SoLuongMua*DonGia) OVER()" class="java.math.BigDecimal"/>
+	<field name="Count(invoicedetails.MaSP) OVER()" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="89" y="15" width="201" height="39" uuid="450a3e91-1301-40e5-bee6-5db5a6f438c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chi Tiết Hóa Đơn]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="65">
+			<staticText>
+				<reportElement x="0" y="4" width="89" height="20" uuid="813080fe-4b24-4236-a851-86517f482236"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã Hóa Đơn: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="4" width="71" height="20" uuid="2624d4b2-2084-4f85-a9c1-7614e86da3b7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MaHD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="194" y="4" width="89" height="20" uuid="a50944c5-2fbe-4152-a862-d8a72a31777d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày Phát Hành: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="4" width="88" height="20" uuid="07bfc964-0bfb-4724-80bc-12bf83ff6b5d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NgayPhatHanh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="89" height="20" uuid="640f8b9b-ece1-4ece-9d1d-3ab75bf08948"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="37" width="100" height="20" uuid="63c14c46-5521-46b8-a5ac-1f0d6fb6dab6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TenKH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="194" y="37" width="130" height="20" uuid="e7b464d5-6ace-48d2-bc8a-c3f324b44be2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã nhân viên thực hiện: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="327" y="37" width="58" height="20" uuid="43b07ab2-6f9a-4ec0-a243-61335385a89c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MaNV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="168" y="0" width="89" height="20" uuid="9b51c71c-b085-4f2f-8c56-40b8ddffba36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số Lượng Mua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-11" y="0" width="91" height="20" uuid="60b33822-78ad-40a4-98a0-9b2d71f0fc22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã Sản Phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="67" height="20" uuid="9347ee31-771b-4933-af9d-7f0f8886b0d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn Giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="67" height="20" uuid="64ea36b2-5d6e-4260-b423-7dd4d0d9dfe8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành Tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="87" height="20" uuid="6e6ae21e-9d6d-4dad-b24c-dd2d76402b26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên Sản Phẩm]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32">
+			<line>
+				<reportElement x="3" y="30" width="381" height="1" uuid="3120d252-0c12-4d48-94b1-55e4732723cc"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="63" height="20" uuid="14d84fe7-35de-49d2-ac50-4993d585d315"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MaSP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="0" width="51" height="20" uuid="55e21009-4c2f-4711-a60a-2f94e6346b9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DonGia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="0" width="57" height="20" uuid="89b6ed52-a1c8-43fd-985f-de9df1a25267"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SoLuongMua * DonGia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="0" width="87" height="20" uuid="1c3a8326-7735-418f-8017-c6aca644bc74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TenSP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="0" width="48" height="20" uuid="031cfbcf-e7b5-4dce-8c6c-983f9901f432"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SoLuongMua}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31">
+			<staticText>
+				<reportElement x="89" y="11" width="244" height="20" uuid="711751d4-1fd1-4009-983d-d56fc711f4ca"/>
+				<textElement>
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cảm ơn quý khách đã đặt hàng!!!]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<summary>
+		<band height="64" splitType="Stretch">
+			<textField>
+				<reportElement x="176" y="31" width="107" height="28" uuid="7f4666a7-08bb-4fb9-aa78-81bc9fed05bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Sum(SoLuongMua*DonGia) OVER()}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="31" width="123" height="28" uuid="352fdc2e-02ba-4cc8-9d61-6a6a14ae1aec"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng Tiền: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="0" width="155" height="31" uuid="4794caf4-8b64-4633-a380-546a126001f5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng sản phẩm: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="0" width="100" height="31" uuid="88373490-96d1-4a2f-9834-3e9392a3c811"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Count(invoicedetails.MaSP) OVER()}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

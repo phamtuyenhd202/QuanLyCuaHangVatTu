@@ -5,6 +5,7 @@
 package HomePage.MenuForNV;
 
 import BillManagement.BanHang.BanHang;
+import BillManagement.QL_HoaDon.QL_HoaDon;
 import LogIn.Login;
 import ProductManagement.QL_SanPham;
 import Statistic.BaoCao_ThongKe;
@@ -259,7 +260,7 @@ public class HomeEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        BanHang qlkh = new BanHang();
+        QL_HoaDon qlkh = new QL_HoaDon();
         qlkh.setVisible(true);
         this.hide();
     }//GEN-LAST:event_jButton5ActionPerformed
